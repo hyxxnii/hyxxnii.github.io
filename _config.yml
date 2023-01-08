@@ -4,32 +4,32 @@
 # ---------------------------------------------------------------
 
 # Site
-title: NexT
-subtitle:
-description:
-author: John Doe
-# Support language: de, en, fr-FR, id, ja, ko, pt-BR, pt, ru, zh-Hans, zh-hk, zh-tw
+title: Y.H Develog
+subtitle: 일상과 밀접한 인공지능
+description: 
+author: Yeonghyeon Kim
+Support language: en, ko
 language: en
 date_format: '%Y-%m-%d'
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com' and baseurl as '/child'
-url:
+url: "https://hyxxnii.github.io"
 baseurl:
 permalink: pretty
 
 # Pagination
 paginate: 10
-#paginate_path: "/page:num/"
-#archive:
-  #paginate: 10
-  #paginate_path: "/page:num/"
-#category:
-  #paginate: 10
-  #paginate_path: "/page:num/"
-#tag:
-  #paginate: 10
-  #paginate_path: "/page:num/"
+paginate_path: "/page:num/"
+archive:
+  paginate: 10
+  paginate_path: "/page:num/"
+category:
+  paginate: 10
+  paginate_path: "/page:num/"
+tag:
+  paginate: 10
+  paginate_path: "/page:num/"
 
 # Handling Reading
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md", "Gemfile", "Gemfile.lock", "README_en.md", "vendor"]
@@ -79,7 +79,7 @@ plugins:
 favicon: /assets/favicon.ico
 
 # Set default keywords (Use a comma to separate)
-keywords: "Jekyll, NexT"
+keywords: "AI, Daily Life, Recommender System"
 
 # Set rss to false to disable feed link.
 # Leave rss as empty to use site's feed link.
@@ -87,7 +87,7 @@ keywords: "Jekyll, NexT"
 rss:
 
 # Specify the date when the site was setup
-#since: 2015
+since: 2023
 
 # icon between year and author @Footer
 authoricon: heart
@@ -109,7 +109,7 @@ seo: false
 
 # If true, will add site-subtitle to index page, added in jekyll config.
 # subtitle: Subtitle
-index_with_subtitle: false
+index_with_subtitle: True
 
 # ---------------------------------------------------------------
 # Menu Settings
@@ -118,8 +118,8 @@ index_with_subtitle: false
 # When running the site in a subdirectory (e.g. domain.tld/blog), remove the leading slash (/archives -> archives)
 menu:
   home: /
-  #categories: /categories/
-  #about: /about/
+  about: /about/
+  categories: /categories/
   archives: /archives/
   tags: /tags/
   #sitemap: /sitemap.xml
@@ -132,7 +132,7 @@ menu:
 #   Key is the name of menu item and value is the name of FontAwesome icon. Key is case-senstive.
 #   When an question mask icon presenting up means that the item has no mapping icon.
 menu_icons:
-  enable: true
+  enable: auto #true
   #KeyMapsToMenuItemKey: NameOfTheIconFromFontAwesome
   home: home
   about: user
@@ -233,7 +233,7 @@ social_icons:
 
 # Sidebar Avatar
 # in directory: /assets/images/avatar.gif
-#avatar:
+avatar: "/assets/images/avatar.gif"
 
 
 # Table Of Contents in the Sidebar
@@ -241,7 +241,7 @@ toc:
   enable: true
 
   # Automatically add list number to toc.
-  number: true
+  number: false
 
   # If true, all words will placed on next lines if header width longer then sidebar width.
   wrap: false
@@ -256,8 +256,8 @@ toc:
 
 sidebar:
   # Sidebar Position, available value: left | right
-  position: left
-  #position: right
+  #position: left
+  position: right
 
   # Sidebar Display, available value:
   #  - post    expand on posts automatically. Default.
@@ -362,8 +362,8 @@ highlight_theme: normal
 
 # MathJax Support
 mathjax:
-  enable: false
-  per_page: false
+  enable: true
+  per_page: true
   cdn: //cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML
 
 # Han Support docs: https://hanzi.pro/
@@ -586,7 +586,7 @@ algolia_search:
 
 # Local search
 local_search:
-  enable: false
+  enable: true
   # if auto, trigger search by changing input
   # if manual, trigger search by pressing enter key or search button
   trigger: auto
