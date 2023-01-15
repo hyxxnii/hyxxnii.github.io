@@ -46,6 +46,10 @@ highlight:
 #### Markdown Processors
 ## 'redcarpet' is unsupported on GitHub Pages now.
 markdown: kramdown
+highlighter: rouge # 추가
+lsi: false # 추가
+excerpt_separator: "\n\n" # 추가
+incremental: false # 추가
 kramdown:
     input: GFM
 
@@ -365,6 +369,7 @@ mathjax:
   enable: true
   per_page: true
   cdn: //cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML
+# https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML
 
 # Han Support docs: https://hanzi.pro/
 han: false
