@@ -46,10 +46,10 @@ highlight:
 #### Markdown Processors
 ## 'redcarpet' is unsupported on GitHub Pages now.
 markdown: kramdown
-highlighter: rouge # 추가
-lsi: false # 추가
-excerpt_separator: "\n\n" # 추가
-incremental: false # 추가
+# highlighter: rouge # 추가
+# lsi: false # 추가
+# excerpt_separator: "\n\n" # 추가
+# incremental: false # 추가
 kramdown:
     input: GFM
 
@@ -248,7 +248,7 @@ toc:
   number: false
 
   # If true, all words will placed on next lines if header width longer then sidebar width.
-  wrap: false
+  wrap: true
 
 
 # Creative Commons 4.0 International License.
