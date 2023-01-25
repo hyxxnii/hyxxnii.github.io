@@ -52,7 +52,7 @@ CF의 두 가지 주요 areas는 인접 방법(neighborhood)과 잠재 요인 �
 이때 한 아이템의 이웃은 동일한 유저에 대해 비슷한 평가를 받는 다른 아이템들이다.
 - ex) 유저 A의 영화 M의 평점을 예측하려고 할 때, 유저 A가 실제로 평가한 영화의 인접 이웃을 찾는다.
 
-![user-oriented neighborhood method](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/687b6263-ff79-47e8-904e-fd19c1fcfe7d/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230115%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230115T101032Z&X-Amz-Expires=86400&X-Amz-Signature=0f816007fa9a6d1a2d02c78af2b27e39afb72134de6a14a50978aa54e1aef83f&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
+![Untitled](https://user-images.githubusercontent.com/48899040/214548939-b25de9c1-ab60-480b-9e23-dcf9beb732ab.png)
 
 
 Figure 1) user-oriented 접근은 서로의 ratings을 보완할 수 있는, 생각이 비슷한 유저들을 식별한다.
@@ -64,7 +64,8 @@ Figure 1) user-oriented 접근은 서로의 ratings을 보완할 수 있는, 생
 - 영화의 경우, 발견되는 요인들이 코미디 vs 드라마, 액션의 양, 어린이의 성향(orientation)과 같은 **분명한 차원**, 또는 character development의 깊이 또는 기묘함과 같은 **잘 정의되지 않은 차원**, 또는 **완전히 해석할 수 없는 차원**을 측정할 수 있다고 한다. 
 - 유저의 경우, 각 요인(factor)은 **해당되는 영화 요인(factor)에서 높은 점수를 가진 영화를 유저가 얼마나 좋아하는지** 측정할 수 있다.
 
-![Untitled](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/f2d006e2-52b8-423a-baed-45da01505f03/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230115%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230115T101213Z&X-Amz-Expires=86400&X-Amz-Signature=5edb451b3b37f0f33833f787a854154aae50c826a7c7e25c009f827bfc0a4881&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
+![Untitled 1](https://user-images.githubusercontent.com/48899040/214548780-1f11e4c8-c208-40a3-8015-85a6fdb21f9a.png)
+
 
 Figure 2는 2차원에서 이 아이디어에 대한 간단한 예시를 보여준다.
 
@@ -93,7 +94,7 @@ MF 모델은 유저와 아이템 모두 $f$ 차원의 공동(joint) 잠재 요�
 
 이때 내적 $q_i^Tp_u$ 의 결과는 유저 $u$와 아이템 $i$ 사이의 상호 작용을 캡쳐한다. 즉, 아이템의 특징에 대한 유저의 전반적인 관심을 나타낸다. 이것은 유저 $u$의 아이템 $i$의 평점을 근사하고, $r_{ui}$라고 표기된다.
     
-![Untitled](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/2c2aceae-88ce-41b4-adcd-e3d80732f708/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230115%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230115T101542Z&X-Amz-Expires=86400&X-Amz-Signature=342b4b11b0b595629d2aa1d786bc61c723aef8a6802bd2f720cba7567e2d9297&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
+![Untitled 2](https://user-images.githubusercontent.com/48899040/214549009-76140e97-319a-4005-b5b9-952687602b7d.png)
     
 
 <br>
@@ -108,7 +109,7 @@ CF 도메인에서 SVD를 적용하려면, 유저-아이템 평점 행렬을 인
 
 요인 벡터 ($p_u, q_i)$을 학습하기 위해, 시스템은 알려진 평점 셋에서 **정규화 제곱 오차를 최소화**한다.
     
-![Untitled](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/e0f64ffd-2e3e-48ce-bec7-1b067871c1ec/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230115%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230115T101738Z&X-Amz-Expires=86400&X-Amz-Signature=aa346178572ce4a41da36e47aad4489b52e15dfc1be05c78f34bcdc66e46e551&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
+![Untitled 3](https://user-images.githubusercontent.com/48899040/214549216-e1fb74fd-741c-46aa-ba79-a39e49a3a18d.png)
     
 - $k$: (훈련 데이터셋에서) 알려진 평점 $r_{ui}$$(u,i)$ 이 있는 $(u,i)$ 쌍의 집합
 
@@ -123,11 +124,11 @@ CF 도메인에서 SVD를 적용하려면, 유저-아이템 평점 행렬을 인
 ## Stochastic gradient descent (SGD)
 SGD는 훈련 셋에 있는 **모든 평점에 대해 loop를 도는** 알고리즘으로, 각각 주어진 training case에 대해, 시스템은 $r_{ui}$를 예측하고 아래 식의 연관된 예측 에러를 계산한다.
 
-![Untitled](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/56eb98ac-8122-496a-8cd0-cd5d358aa154/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230115%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230115T101907Z&X-Amz-Expires=86400&X-Amz-Signature=a163189d76392ac0c12cdb2c4c9462ede8e53cafc0e62be7b34ab2c0d970dcd8&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
+![Untitled 4](https://user-images.githubusercontent.com/48899040/214549223-b92c9f1d-999c-44f3-84e1-9cbe193cc0d0.png)
 
 그 후 크기에 비례하여 파라미터를 **gradient의 반대 방향**으로 수정하고, 다음을 산출한다.
 
-![Untitled](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/3b694f4e-126f-4ec5-aa1e-77ebe514848e/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230115%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230115T101951Z&X-Amz-Expires=86400&X-Amz-Signature=1d4c6141b687c8eb8de1f1d15e725c15cb46d0cdc1db0edd15aa00a9c80f04f6&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
+![Untitled 5](https://user-images.githubusercontent.com/48899040/214549224-375769d8-2950-4870-82a2-73e33457c441.png)
 
 이러한 SGD 방식의 접근은 구현 용이성(implement ease)과 비교적 빠른 실행 시간을 결합한다. 
 
@@ -159,7 +160,7 @@ CF에 대한 MF 접근 방식의 한 가지 이익은 다양한 데이터 측면
 
 평점 $r_{ui}$에 포함된 bias의 1차 (first-order) 근사치는 다음과 같다.
     
-![해당 유저와 해당 영화 각각의 bias 값을 평균 평점에 더한다](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/6136676c-9bc8-4388-a6ce-f5bbb3c06d47/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230115%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230115T102241Z&X-Amz-Expires=86400&X-Amz-Signature=fdb152c3a18056b3521c7160b9ec607cfa76970a2e01e42dfbbdc5c9a65a4c5c&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
+![Untitled 6](https://user-images.githubusercontent.com/48899040/214549226-92fb615e-9925-4293-a889-d1248fe4c9de.png)
 
 해당 유저와 해당 영화 각각의 bias 값을 평균 평점에 더한다
 
@@ -177,7 +178,7 @@ CF에 대한 MF 접근 방식의 한 가지 이익은 다양한 데이터 측면
 
 Biases는 다음과 같이 Equation 1을 확장한다.
    
-![Untitled](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/b183420c-8476-4343-9b9b-359332b68c63/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230115%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230115T102322Z&X-Amz-Expires=86400&X-Amz-Signature=0a330ba247412b3b457183b46bb93ae0bec31d27873be23d387646d6391d6d96&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
+![Untitled 7](https://user-images.githubusercontent.com/48899040/214549227-e92b97b2-8660-40ae-ab60-131c3da8ae5e.png)
     
 
 - 관측된 평점의 4가지 구성 요소
@@ -190,7 +191,7 @@ Biases는 다음과 같이 Equation 1을 확장한다.
 
 - 학습: 아래의 오차 제곱 함수를 최소화
     
-    ![Untitled](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/63c14b0b-7a1d-4b6d-a095-165c1d180b53/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230115%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230115T102406Z&X-Amz-Expires=86400&X-Amz-Signature=83c3c38246d17f825c7ded14651d24c185199e1437a275609bafb05edcae400f&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
+    ![Untitled 8](https://user-images.githubusercontent.com/48899040/214549228-59130008-06d3-4756-a06a-dfc710c12d90.png)
     
 
 biases가 관측된 signal의 대부분을 포착하려는 경향이 있어 정확한 모델링은 필수적이다. 따라서, 다른 작업들이 더 정교한 bias 모델을 제공한다.
@@ -204,23 +205,23 @@ biases가 관측된 signal의 대부분을 포착하려는 경향이 있어 정�
 - ex) 소매업자는 고객이 제공하는 평점(등급)과 더불어 고객의 경향성을 학습하기 위해 고객의 구매 또는 브라우징 이력을 사용할 수 있다.
         
 
-단순함을 위해, Boolean 암시적 피드백의 경우에 대해 고려해보자
+단순함을 위해, Boolean 형태의 암시적 피드백의 경우에 대해 고려해보자
 - $N(u)$: **유저 $u$가 암시적 선호도를 표현하는 아이템 집합**
     - 유저가 암시적으로 선호하는 아이템을 통해 유저를 프로파일링
     - 여기서 아이템 $i$가 $x_i\in\mathbb{R}^f$와 관련된 아이템 요인의 새로운 집합이 필수적
     - 따라서, $N(u)$를 통해 아이템의 선호도를 보여준 유저는 벡터 $\sum_{i\in N(u)}x_i$에 의해 특징 지어진다
 
-다음과 같이 합계를 정규화하는 것은 종종 유익하다
-    ![Untitled](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/b019e8b2-dcbd-44c1-9324-3ac485de2300/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230115%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230115T102535Z&X-Amz-Expires=86400&X-Amz-Signature=314914caa093bc3af2712d7ebdbb6d26c758cd0bb97dbbd06255f6b24151c3b6&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
+다음과 같이 합계를 정규화하기도 한다
+    ![Untitled 9](https://user-images.githubusercontent.com/48899040/214549230-86deb30a-463b-4258-9f51-122a31d29dcb.png)
     
 
 또다른 정보는 **인구 통계와 같은 유저의 특성**으로 알려진다. 단순함을 위해, 유저 $u$가 성별, 연령대, zip code, 수입 정도 등과 같은 특성 집합 $A(u)$에 해당하는 Boolean 특성을 고려해보자. 구별되는 요인 벡터 $y_a\in\mathbb{R}^f$는 다음과 같은 유저 관련 특성 집합을 통해 유저를 설명하는 각 특성에 해당한다.
 
-![Untitled](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/a93660bc-3abe-40c5-b7a6-078723a1146c/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230115%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230115T102616Z&X-Amz-Expires=86400&X-Amz-Signature=ca40b592417c4e3b616a9799f0414577a6d3233188694db76324f02e9c7b0c0a&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
+![Untitled 10](https://user-images.githubusercontent.com/48899040/214549236-2d19c6e9-350b-4e45-a4b1-f0749fc86857.png)
 
 최종적으로 matrix factorization 모델은 모든 signal sources를 통합해야 하기 때문에, 더욱 향상된 user representation이 필요하다.
     
-![Untitled](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/48557d75-a9ef-4318-92a7-59cc812a3903/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230115%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230115T102645Z&X-Amz-Expires=86400&X-Amz-Signature=f8ed243a09b0bcfcfc4c0ccdb503baee1cbb693d7394bf6b5ca2d3082880b0b4&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
+![Untitled 11](https://user-images.githubusercontent.com/48899040/214549238-bf3464b3-c2de-46b0-b3f5-180d88ba9ff0.png)
     
 
 ## Temporal Dynamics
@@ -253,5 +254,5 @@ MF 방식은 시간적 효과를 모델링하는데 적합하여 정확도를 �
     
 - time-varying 파라미터의 정확한 파라미터화는 식 4를 time t에서 dynamic prediction rule로 변경
     
-    ![Untitled](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/d26f16d4-f9ad-4dcd-8956-56ad3d663773/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230115%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230115T102832Z&X-Amz-Expires=86400&X-Amz-Signature=c5d4a811016c6cfad55e1fd9b1715cd19213a7b50dc85bd1e1752802c52932bc&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
+    ![Untitled 12](https://user-images.githubusercontent.com/48899040/214549240-986df242-917e-47ff-952e-c9412eabe60f.png)
     
