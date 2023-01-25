@@ -12,15 +12,12 @@ use_math: true
 comments: true
 ---
 
-##### 논문 출처: [Matrix Factorization Techniques for Recommender Systems](https://datajobs.com/data-science-repo/Recommender-Systems-%5BNetflix%5D.pdf)
+#### 논문 출처: [Matrix Factorization Techniques for Recommender Systems](https://datajobs.com/data-science-repo/Recommender-Systems-%5BNetflix%5D.pdf)
 
 
 본 포스팅은 Netflix Prize에서 우승을 거둔, 2009년에 발표된 Matrix Factorization Techniques for Recommender Systems 논문을 정리한 글이다.
 
-<br>
-
-> Netflix Prize 대회에서 증명되었듯이, matrix factorization 모델은 상품을 추천하면서 implicit 피드백와 일시적 효과 및 신뢰도에 대해 고전적인 nearest-neighbor 기술보다 월등하다
-
+---
 <br>
 
 # Recommender system strategies
