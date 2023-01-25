@@ -74,6 +74,8 @@ Figure 2는 몇개의 잘 알려진 영화와 몇 명의 가상 유저가 이러
 
 - ex) Gus가 ‘Dumb and Dumber’를 좋아하고, ‘The Color Puple’은 싫어하고, ‘Braveheart’를 평균적으로 평가할 것으로 기대한다. ‘Ocean’s 11’과 같은 몇가지 영화들과 Dave와 같은 유저들은 2차원 상에서 공정하게 중립적인 것으로 특징지어 질 것이다.
 
+<br>
+
 # Matrix Factorization (MF) Models
 
 잠재 요인 모델의 가장 성공적인 구현의 일부는 **Matrix Factorization(MF)** 에 기반한다. MF의 기본적인 형태는 **아이템 평점 패턴으로부터 추론된 요인들의 벡터에 의해 아이템과 유저 둘 다 특징 짓는다.** 추천시스템은 유저를 나타내는 1차원과 아이템의 관심을 나타내는 다른 차원을 가진 행렬에 놓여진 다양한 유형의 입력 데이터에 의존한다. 
@@ -85,6 +87,8 @@ Figure 2는 몇개의 잘 알려진 영화와 몇 명의 가상 유저가 이러
 MF의 한 가지 장점은 **추가 정보를 통합**할 수 있다는 것이다.
 명시적 피드백을 이용하지 못할 때, 추천시스템은 암시적 피드백(implicit feedback)을 통해 유저의 선호도를 추론할 수 있고, 그것은 구매 이력, 브라우징 이력, 검색 패턴, 심지어 마우스 이동 등을 포함하는 유저의 행동을 관찰함으로써 간접적으로 의견을 반영할 수 있다. 암시적 피드백은 보통 이벤트의 유무를 나타내므로, 따라서 일반적으로 **dense matrix**로 표현된다.
     
+
+<br>
 
 # A Basic Matrix Factorization Model
 
@@ -117,11 +121,13 @@ CF 도메인에서 SVD를 적용하려면, 유저-아이템 평점 행렬을 인
 
 - 상수항 $\lambda$는 정규화의 정도를 제어하고 보통 cross-validation에 의해 값이 결정된다.
 
+<br>
+
 # Learning Algorithms
 
 식 (2)를 최소화하는 2가지 접근 방식은 `stochastic gradient descent(SGD)`와 `alternating least squares(ALS)`이다. 두 가지에 대해 자세히 알아보자.
 
-## Stochastic gradient descent (SGD)
+## 1. Stochastic gradient descent (SGD)
 SGD는 훈련 셋에 있는 **모든 평점에 대해 loop를 도는** 알고리즘으로, 각각 주어진 training case에 대해, 시스템은 $r_{ui}$를 예측하고 아래 식의 연관된 예측 에러를 계산한다.
 
 ![Untitled 4](https://user-images.githubusercontent.com/48899040/214549223-b92c9f1d-999c-44f3-84e1-9cbe193cc0d0.png)
@@ -134,7 +140,7 @@ SGD는 훈련 셋에 있는 **모든 평점에 대해 loop를 도는** 알고리
 
 하지만 어떤 경우에선, ALS 최적화를 사용하는 것이 유익하다.
 
-## Alternaing least squares (ALS)
+## 2. Alternaing least squares (ALS)
 $q_i$와 $p_u$ 둘 다 알려져있지 않기 때문에, 식 (2)는 convex 하지 않다. 하지만, **이들 중 하나를 고정** 한다면, 최적화 문제는 **2차(Quadratic)** 가 되어 최적으로 풀 수가 있다.
 따라서, ALS 기술은 $q_i$의 고정과 $p_u$의 고정을 번갈아 진행한다. (EM 알고리즘처럼) 모든 $p_u$가 고정된다면, 시스템은 반대로 $q_i$에 대해 **최소-제곱 문제**를 푸는 것으로써 재계산 ⇒ 각 단계가 수렴할 때까지 식 (2)를 감소시키는 것을 보장한다.
 
@@ -148,6 +154,8 @@ $q_i$와 $p_u$ 둘 다 알려져있지 않기 때문에, 식 (2)는 convex 하�
       
       훈련 셋이 sparse하다고 볼 수 없기 때문에, 각 단일 훈련 케이스에 대해 gradient descent처럼 looping하는 것은 실용적이지 않을 수 있다. ⇒ ALS는 이러한 경우에 대해 효율적으로 다룰 수 있다.
         
+
+<br>
 
 # Adding Biases
 
@@ -196,6 +204,8 @@ Biases는 다음과 같이 Equation 1을 확장한다.
 
 biases가 관측된 signal의 대부분을 포착하려는 경향이 있어 정확한 모델링은 필수적이다. 따라서, 다른 작업들이 더 정교한 bias 모델을 제공한다.
 
+<br>
+
 # Additional Input Sources
 
 종종 추천 시스템은 많은 유저가 아주 적은 평점을 제공하여 그들의 취향에 대해 일반적인 결론을 내기 어렵게 하는 **cold start 문제**를 처리해야 한다. 이를 해결하는 한 가지 방법은 **유저에 대한 추가적인 정보를 통합하는 것**이다. 
@@ -223,8 +233,9 @@ biases가 관측된 signal의 대부분을 포착하려는 경향이 있어 정�
     
 ![Untitled 11](https://user-images.githubusercontent.com/48899040/214549238-bf3464b3-c2de-46b0-b3f5-180d88ba9ff0.png)
     
+<br>
 
-## Temporal Dynamics
+# Temporal Dynamics
 지금까지의 모델들은 static(동적)하지만, 실제로 제품에 대한 인식과 인기는 새로운 selection이 나타남에 따라 계속해서 변한다.
   - ex) 고객의 성향이 진화 ⇒ 고객의 취향을 재정의
 
