@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[Paper Review] Matrix Factorization Techniques for Recommender Systems (IEEE, 2009)"
+title: "[논문리뷰] Matrix Factorization Techniques for Recommender Systems (IEEE, 2009)"
 date: 2022-09-07
 categories:
 - Recommender System
