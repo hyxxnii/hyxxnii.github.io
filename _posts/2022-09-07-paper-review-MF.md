@@ -8,6 +8,7 @@ tags:
 - recommender system
 - matrix factorization
 use_math: true
+comments: true
 ---
 
 ##### 논문 출처: [Matrix Factorization Techniques for Recommender Systems](https://datajobs.com/data-science-repo/Recommender-Systems-%5BNetflix%5D.pdf)

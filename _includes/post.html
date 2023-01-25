@@ -14,3 +14,9 @@
     {% endif %}
   </div>
 </div>
+
+{%- if page.comments -%}
+  <div id="post-disqus" class="container">
+    {%- include disqus_comments.html -%}
+  </div>
+  {%- endif -%}
