@@ -133,13 +133,11 @@ Section 4에서 비교해보자.
 <br>
 
 ## 2.2 Variatioanl inference
-
-식 1의 생성 모델을 학습하기 위해, $f_\theta(\cdot)$의 파라미터인 $\theta$를 추정해야한다. 이를 위해 **variational inference(변분 추론)를 사용하여** 각 data point마다 다루기 힘든 **posterior 분포 $p(z_u|x_u)$를 근사할 필요**가 있다.
+식 1의 생성 모델을 학습하기 위해, $f_\theta(\cdot)$의 파라미터인 $\theta$를 추정해야한다. 이를 위해 **variational inference(변분 추론)**를 사용하여 각 data point마다 다루기 힘든 **posterior 분포 $p(z_u|x_u)$를 근사할 필요**가 있다.
 
 Variational inference는 다루기 힘든 실제 posterior을 더 단순한 variational 분포 $q(z_u)$로 근사한다. **논문에서는 $q(z_u)$를** fully factorized (diagonal) Gaussian distribution**으로 설정하였다.**
 
 ![Untitled 5](https://user-images.githubusercontent.com/48899040/214767271-f46dce73-3b3d-4ec2-9f6b-ce67aabeb45d.png)
-
 **variational inference의 목적은 Kullback-Leiber divergence $KL(q(z_u)||p(z_u|x_u))$를 최소화하도록 파라미터 $\{\mu_u, \sigma^2_u \}$를 최적화하는 것이다.** 
 
 <br>
@@ -155,11 +153,9 @@ variational inference를 통해 $\{\mu_u, \sigma^2_u \}$를 최적화할 파라�
 variational 분포를 아래와 같이 설정한다.
 
 ![Untitled 7](https://user-images.githubusercontent.com/48899040/214767275-d490eaf8-25d1-44d0-bd05-a68db5bc5765.png)
-
 즉, **입력으로써 관측된 데이터 $x_u$를 사용하는 inference 모델은 variational 분포 $q_\phi(z_u|x_u)$에 해당하는 varitional 파라미터를 출력하는데, 이 $q_\phi(z_u|x_u)$는 최적화될 때 다루기 힘든 posterior $p(z_u|x_u)$를 근사한다.**
 
 - 구현 시에는 inference 모델은 variational 분포의 variance의 log값이 출력된다.
-
 그림 2에서, $q_\phi(z_u|x_u)$와 생성 모델 $p_\theta(x_u|z_u)$를 함께 넣으면, autoencoder와 유사한 뉴럴 아키텍처가 만들어진다. 따라서 variational autoencoder라고 불린다.
 
 <br>
@@ -273,7 +269,7 @@ source code: [GitHub](https://github.com/dawenl/vae_cf)
 
 다양한 도메인으로부터 3개의 medium-to large-scale 유저-아이템 소비 데이터를 연구했다.
 
-- MovieLens-20M (ML-20M): 영화 추천 서비스로부터 수집한 유저-영화 평점 데이터. **평점 4 이상만 유지하여 명시적 데이터를 이진화(binarize)하고,** 최소 5편의 영화를 시청한 유저들만 유지한다.
+- **MovieLens-20M (ML-20M)**: 영화 추천 서비스로부터 수집한 유저-영화 평점 데이터. 평점 4 이상만 유지하여 명시적 데이터를 이진화(binarize)하고,*최소 5편의 영화를 시청한 유저들만 유지한다.
 - **Netflix Prize (Netflix)**: [Netflix Prize](http://www.netflixprize.com/)의 유저-영화 평점 데이터. ML-20M과 유사하고 평점 4 이상만 유지하여 명시적 데이터를 이진화하고, 최소 5편의 영화를 시청한 유저들만 유지한다.
 - **Million Song Dataset (MSD)**: Million Song Dataset 일부로 공개된 유저-곡 재생 횟수가 포함된 데이터. 재생 횟수를 이진화하고, 유저의 청취 기록에서 최소 20곡을 이상의 노래가 있는 유저와 최소 200명 이상의 유저가 청취한 곡만 유지한다.
 
@@ -427,7 +423,7 @@ inference 모델 $g_\phi(\cdot)$의 입력으로서 제공되는 fold-in 셋에 
 
 ![Untitled 20](https://user-images.githubusercontent.com/48899040/214767466-6457bb72-5854-4a71-bdef-fb0efc0c7d11.png)
 
-Figure 3은 증가하는 유저 활동에 대한 성능을 보여준다. 오류 막대는 하나의 표준 오류(standard error)를 표현한다. 각 subplot마다, paired t-test가 수행되고 통계적 유의성이 표시된다. **데이터셋에 따라 약간의 차이가 있지만, `Mult-VAE`는 적은 아이템 수만 클릭한 사용자를 위해 지속적으로 좋은 추천 성능을 보였다.**. (ML-20M, Figure 3a)
+Figure 3은 증가하는 유저 활동에 대한 성능을 보여준다. 오류 막대는 하나의 표준 오류(standard error)를 표현한다. 각 subplot마다, paired t-test가 수행되고 통계적 유의성이 표시된다. **데이터셋에 따라 약간의 차이가 있지만, `Mult-VAE`는 적은 아이템 수만 클릭한 사용자를 위해 지속적으로 좋은 추천 성능을 보였다.** (ML-20M, Figure 3a)
 
 `Mult-DAE`는 실제로 가장 활동적인 유저에 대해 Mult-VAE보다 성능이 더 뛰어나다. 이는 prior 가정이 더 강할 경우 유저가 많은 데이터를 사용할 수 있을 때 잠재적으로 성능이 저하될 수 있음을 나타낸다. 
 
@@ -448,7 +444,5 @@ Mult-VAE는 잠재 표현 $z$를 얻기 위해 두 파라미터셋 (variational 
 본 논문은 암시적 피드백 데이터에 대해 collaborative filtering을 위한 VAE의 변형 모델을 제안하였고, 이를 통해 제한된 모델링 용량을 가진 선형 요인 모델을 넘어설 수 있었다. 특히 **multinomial likelihood** 함수를 가진 생성 모델을 도입하여 유저-아이템의 암시적 피드백 데이터를 모델링하는데 더욱 적합하다는 것을 보였다.
 
 또한 `Mult-VAE`를 부분적으로 정규화하기 위해 추가적인 정규화 파라미터 $\beta$를 도입했다. 이때 **KL annealing**을 사용하여 $\beta$를 실용적이고 효과적으로 조정하였다.
-
 논문에서 제안한 두 모델 `Mult-VAE`와 `Mult-DAE` 모두 real-world 데이터셋에 대해 SOTA 베이스라인보다 월등한 성능을 보였다.
-
-마지막으로 `Mult-VAE`와 `Mult-DAE`의 장단점을 확 하인여 pniicpied Bayesian approach를 사용하는 것이 더 강건하다는 것을 보였다.
+마지막으로 `Mult-VAE`와 `Mult-DAE`의 장단점을 확인하여 pniicpied Bayesian approach를 사용하는 것이 더 강건하다는 것을 보였다.
