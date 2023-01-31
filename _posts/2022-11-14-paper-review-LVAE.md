@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[논문리뷰] Linear Variational Autoencoder for Top-N Recommendation (IEEE, 2022)"
-date: 2022-12-11
+date: 2022-11-14
 categories:
 - Recommender System
 tags:
