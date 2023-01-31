@@ -29,7 +29,7 @@ comments: true
 
 <br>
 
-## I. INTRODUCTION
+# I. INTRODUCTION
 
 - 비선형 신경망을 이용한 기존 VAE와 그에 대한 많은 변형 모델 ⇒ **sparse dataset의 추천시스템 성능을 향상시키는 데 필요한가라는 질문**
 - 저자들이 Mult-VAE의 인코더와 디코더를 single-layer 선형 구조로 단순화했을 때 sparse dataset에서 성능이 더 향상된다는 것을 발견 (in Table 3) ⇒ 비선형 인코더, 디코더가 오히려 성능 떨어뜨린다
@@ -38,14 +38,11 @@ comments: true
 
 **📍 Motivation**
 
-- LightGCN(Graph Convolution Network): GCN에서 상속된 feature transformation과 비선형 활성함수를 사용할 때 더 나쁜 결과를 얻는다 ⇒ sparse한 유저-아이템 상호작용 데이터를 처리하기 위해 복잡한 모델을 사용하면 성능이 저하되고 학습 프로세스가 왜곡될 수 있다
-    - GCN의 2가지 특징, feature transformation과 nonlinear activation들이 협업필터링 성능에 크게 기여하지 않는다는 것을 확인 (오히려 이들을 추가했을 때 학습이 더 어려워지고 추천 성능이 더 떨어지는 경우도 있었음)
-    - 그래서 GCN을 더 간소화해서 user-item interaction graph에서 선형적으로 전파
+LightGCN(Graph Convolution Network): GCN에서 상속된 feature transformation과 비선형 활성함수를 사용할 때 더 나쁜 결과를 얻는다 ⇒ sparse한 유저-아이템 상호작용 데이터를 처리하기 위해 복잡한 모델을 사용하면 성능이 저하되고 학습 프로세스가 왜곡될 수 있다
+  - GCN의 2가지 특징, feature transformation과 nonlinear activation들이 협업필터링 성능에 크게 기여하지 않는다는 것을 확인 (오히려 이들을 추가했을 때 학습이 더 어려워지고 추천 성능이 더 떨어지는 경우도 있었음)
+  - 그래서 GCN을 더 간소화해서 user-item interaction graph에서 선형적으로 전파
     
-    **⇒ VAE도 훨씬 단순하게 학습하도록 동기 부여**
-
-
-<br>
+**⇒ VAE도 훨씬 단순하게 학습하도록 동기 부여**
 
 📍 **LVA(Linear Variational Autoencoder)**
 
@@ -54,6 +51,8 @@ comments: true
   - 다른 linear 방식도 더 좋은 추천 성능에 쓰일 수 있지만 (e.g., pure matrix multiplication without extra bias) future work로 남겼다
   - **이러한 간단한 선형 인코더와 디코더는 posterior collapse 문제를 완화하고 상호 작용 데이터를 더 잘 맞출 수 있도록하며, ranking accuracy를 더 높인다** (이후 실험에서 보여줌)
     
+
+<br>
 
 ### Main contributions
 
@@ -67,10 +66,6 @@ comments: true
 # II. PRELIMINARY
 
 - notations, 문제 정의, Mult-VAE의 기본 소개
-
-
-<br>
-
 
 ### A. notations
 
@@ -99,33 +94,34 @@ comments: true
 
 ## A. Linear Encoder and Decoder
 
-- linear transformation을 가진 선형 디코더
-    
-    ![Untitled 3](https://user-images.githubusercontent.com/48899040/215704131-82ae1f83-ca2f-431c-be07-e4337d2e410d.png)
-    
-    - $W_\theta\in \mathbb R^{K\times|I|}$, $b_\theta \in \mathbb R^{|I|}$: 디코더의 weight와 bias, $K$는 latent dimension
-    - $z_u\in \mathbb R^K$: 유저 $u$의 latent representation
-  
-- 최근 연구에서는 유저와 아이템 간의 상호작용을 모델링할 때 단순한 dot product가 복잡한 MLP보다 낫다는 것을 보여주었기에 타당하다
-    - MLP는 충분한 hidden states를 가지고 있는 compact set에서 모든 연속 함수를 근사할 수 있는 universal approximator ⇒ MLP로 dot product를 근사하는 것은 큰 모델 용량과 훈련 셋이 필요하기때문에 어렵다
+linear transformation을 가진 선형 디코더
+![Untitled 3](https://user-images.githubusercontent.com/48899040/215704131-82ae1f83-ca2f-431c-be07-e4337d2e410d.png)
 
-- 인코더: variational distribution $q_\phi(z_u|x_u)$의 평균과 분산을 계산하는 데 사용되는 두 함수로 구성됨
-    
+- $W_\theta$, $b_\theta$ 디코더의 weight와 bias, $K$는 latent dimension
+- $z_u\in \mathbb R^K$: 유저 $u$의 latent representation
+
+- 최근 연구에서는 유저와 아이템 간의 상호작용을 모델링할 때 단순한 dot product가 복잡한 MLP보다 낫다는 것을 보여주었기에 타당하다.
+    - MLP는 충분한 hidden states를 가지고 있는 compact set에서 모든 연속 함수를 근사할 수 있는 universal approximator ⇒ MLP로 dot product를 근사하는 것은 큰 모델 용량과 훈련 셋이 필요하기때문에 어렵다.
+
+
+인코더: variational distribution $q_\phi (z_u|x_u)$의 평균과 분산을 계산하는 데 사용되는 두 함수로 구성됨
     ![Untitled 4](https://user-images.githubusercontent.com/48899040/215704136-25ce1952-a58c-445d-96e0-4d3148ce1059.png)
     
-    - $W_\mu\in \mathbb R^{|I|\times K}$, $b_\mu \in \mathbb R^{K}$: mean function의 weight와 bias
-    - $W_\sigma\in \mathbb R^{|I|\times K}$, $b_\sigma \in \mathbb R^{K}$: variance function의 weight와 bias
+  - $W_\mu$, $b_\mu$: mean function의 weight와 bias
+  - $W_\sigma$, $b_\sigma$: variance function의 weight와 bias
 
 ![Untitled 5](https://user-images.githubusercontent.com/48899040/215704140-d2cf02de-0e01-4a7a-9056-524648cb4a58.png)
 
 ![Untitled 6](https://user-images.githubusercontent.com/48899040/215704143-3cc61c81-0f0b-49f3-9323-22f7d64e2809.png)
 
-- ELBO식은 기존 Mult-VAE와 동일
+- ELBO 식은 기존 Mult-VAE와 동일
     
     ![Untitled 7](https://user-images.githubusercontent.com/48899040/215704146-2a197110-2ee2-4d2c-9d37-88863a93b0da.png)
 
-    - 차이점: variational distribution $q_\phi(z_u|x_u)$의 파라미터가 (평균, 분산) 식 (5)을 사용하여 계산된다는 것
-    - 나머지 학습과정도 동일
+
+  - 차이점: variational distribution $q_\phi$의 파라미터가 (평균, 분산) 식 (5)을 사용하여 계산된다는 것
+
+  - 나머지 학습과정도 동일
     
 
 <br>
@@ -149,7 +145,7 @@ comments: true
 
 ## C. Interpretation
 
-- 선형 인코더와 디코더를 사용한 LVA의 효과를 간략하게 제시
+선형 인코더와 디코더를 사용한 LVA의 효과를 간략하게 제시
 
 1. 인코더와 디코더의 단순한 선형구조 → 이미지 데이터보다 비교적 더 단순한 유저-아이템 상호 작용 matrix에 더 잘맞는다
     - [15]에서 언급한 바와 같이, linear VAE의 ELBO는 local maixma를 introduce하지 않고, variational inference를 통해 훈련하면 주성분 방향에 해당하는 identifiable global maximum을 recover한다
@@ -172,13 +168,13 @@ comments: true
 
 ## A. Experimental Settings
 
-*1) Datasets and Evaluation Metrics*
+1) Datasets and Evaluation Metrics
 
 ![Untitled 9](https://user-images.githubusercontent.com/48899040/215704159-43c0d6ad-325a-48c5-a891-ce5d6cf5689e.png)
 
 - evaluation metrics: recall@20, ndcg@20
 
-*2) Baseline Methods*
+2) Baseline Methods
 
 - 2개의 전통적인 추천시스템 방법 ⇒ **LightGCN, variants of VAE-based recommendation methods**
     - LightGCN
@@ -196,7 +192,7 @@ comments: true
     - RecVAE
     
 
-*3) Hyperparameter Settings*
+3) Hyperparameter Settings
 
 - 공정한 비교 ⇒ LightGCN의 embedding size, LVA의 latent dimension는 64로 고정
 - Mult-VAE: 600 → 200 → 600 (기존 모델 아키텍쳐)
