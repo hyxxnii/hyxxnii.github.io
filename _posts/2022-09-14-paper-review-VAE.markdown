@@ -148,7 +148,7 @@ variational inference를 통해 $\{\mu_u, \sigma^2_u \}$를 최적화할 파라�
 
 ![Untitled 6](https://user-images.githubusercontent.com/48899040/214767273-b891970f-c4b5-4ad6-8ad1-5bb647daed34.png)
 
-- $\mu_\phi(x_u)$와 $\sigma_\phi(x_u)$가 모두 $K$차원의 벡터인 $**\phi$에 의해 파라미터화된 inference 모델**
+- $\mu_\phi(x_u)$와 $\sigma_\phi(x_u)$가 모두 $K$차원의 벡터인 $\phi$에 의해 파라미터화된 inference 모델
 
 variational 분포를 아래와 같이 설정한다.
 
@@ -172,7 +172,7 @@ variational inference을 사용하여 잠재 변수를 사용할 때, 표준 VAE
 
 $z_u$를 $q_\phi$로부터 샘플링($z_u\sim q_\phi$)함으로써 **ELBO의** unbiased한 추정을 얻을 수 있고, 그것을 최적화하기 위해 확률적 경사 하강법(SGD)를 수행할 수 있다.
 
-이때 **reparametrization trick**을 통해 $**\phi$에 관한 gradient가 샘플링된 $z_u$를 통해 역전파된다.**
+이때 **reparametrization trick**을 통해 $\phi$에 관한 gradient가 샘플링된 $z_u$를 통해 역전파된다.
 
 - $\epsilon\sim N(0,I_K)$를 샘플링하고 $z_u=\mu_\phi(x_u)+\epsilon \odot \sigma_\phi(x_u)$를 재파라미터화한다.
 
